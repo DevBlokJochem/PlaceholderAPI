@@ -28,7 +28,9 @@ object RegisterMessagesConfig {
                         whitelist_remove = "<gray>You have <green>succesfully</green> removed <gold><bold>%target_name%</gold></bold> from the whitelist.",
                         whitelist_already = "<gray>This player is already on the <white>whitelist</white>.",
                         whitelist_dont_have = "<gray>I cant remove this player from the whitelist because he doesn't stand on it.",
-                        whitelist_empty = "<gray>Sorry, but the whitelist is empty. I can't give you a list of the players."
+                        whitelist_empty = "<red>Sorry, but the whitelist is empty. I can't give you a list of the players.",
+                        clear_self = "<gray>Your <gold><bold>inventory</bold></gold> has been cleared!",
+                        clear_other = "<gray>You have cleared the <gold><bold>inventory</bold></gold> of <gold><bold>%target_name%</gold></bold>.",
                         ))
             )
         }
@@ -58,4 +60,6 @@ data class MessagesConfig(
     val whitelist_already : String,
     val whitelist_dont_have : String,
     val whitelist_empty : String,
+    val clear_self : String,
+    val clear_other : String,
 )

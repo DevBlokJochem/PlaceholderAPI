@@ -38,7 +38,7 @@ class WhitelistCommand : Command("fly") {
         }
 
         whitelistData.addUUID(target.uuid)
-        sender.msg(messagesConfig.whitelist_add)
+        sender.msg(messagesConfig.whitelist_add, target = target)
 
     }
 
@@ -83,7 +83,7 @@ class WhitelistCommand : Command("fly") {
         }
 
         whitelistData.removeUUID(target.uuid)
-        sender.msg(messagesConfig.whitelist_remove)
+        sender.msg(messagesConfig.whitelist_remove, target = target)
 
     }
 
