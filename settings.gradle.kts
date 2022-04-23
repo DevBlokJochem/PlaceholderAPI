@@ -1,0 +1,2 @@
+rootProject.name = "survival-core"
+
