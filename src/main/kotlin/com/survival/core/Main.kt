@@ -7,6 +7,7 @@ import java.io.File
 class Main : Extension() {
 
     override fun initialize() {
+        registerConfigs()
     }
 
     override fun terminate() {

@@ -21,7 +21,10 @@ object RegisterMessagesConfig {
                         invalid_value = "<red>Sorry, but this isn't a valid value",
                         gamemode_self = "<gray>Your gamemode has changed to <gold><bold>%player_gamemode%</bold></gold>.",
                         gamemode_other = "<gray>You have changed the gamemode of <gold><bold>%target_name%</bold></gold> to <gold><bold>%target_gamemode%</bold></gold>.",
-                    ))
+                        fly_self_on = "<gray>You <green>can</green> fly now.",
+                        fly_self_off = "<gray>You <red>can't</red> fly anymore.",
+                        fly_other = "<gray>You have toggled the fly powers of <gold><bold>%target_name%</gold></bold>.",
+                        ))
             )
         }
     }
@@ -42,4 +45,7 @@ data class MessagesConfig(
     //command messages
     val gamemode_self : String,
     val gamemode_other : String,
+    val fly_self_on : String,
+    val fly_self_off : String,
+    val fly_other : String,
 )
