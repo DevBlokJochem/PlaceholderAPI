@@ -13,7 +13,7 @@ import net.minestom.server.utils.entity.EntityFinder
 
 class FlyCommand : Command("fly") {
     private fun usage(sender: CommandSender, context: CommandContext) {
-        sender.msg("§cUsage: /gamemode <gamemode> [player]")
+        sender.msg("§cUsage: /fly [player]")
     }
 
     private fun executeOnSelf(

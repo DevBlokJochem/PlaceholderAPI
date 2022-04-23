@@ -24,6 +24,11 @@ object RegisterMessagesConfig {
                         fly_self_on = "<gray>You <green>can</green> fly now.",
                         fly_self_off = "<gray>You <red>can't</red> fly anymore.",
                         fly_other = "<gray>You have toggled the fly powers of <gold><bold>%target_name%</gold></bold>.",
+                        whitelist_add = "<gray>You have <green>succesfully</green> added <gold><bold>%target_name%</gold></bold> to the whitelist.",
+                        whitelist_remove = "<gray>You have <green>succesfully</green> removed <gold><bold>%target_name%</gold></bold> from the whitelist.",
+                        whitelist_already = "<gray>This player is already on the <white>whitelist</white>.",
+                        whitelist_dont_have = "<gray>I cant remove this player from the whitelist because he doesn't stand on it.",
+                        whitelist_empty = "<gray>Sorry, but the whitelist is empty. I can't give you a list of the players."
                         ))
             )
         }
@@ -48,4 +53,9 @@ data class MessagesConfig(
     val fly_self_on : String,
     val fly_self_off : String,
     val fly_other : String,
+    val whitelist_add : String,
+    val whitelist_remove : String,
+    val whitelist_already : String,
+    val whitelist_dont_have : String,
+    val whitelist_empty : String,
 )
