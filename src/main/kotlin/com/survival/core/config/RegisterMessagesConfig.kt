@@ -34,7 +34,13 @@ object RegisterMessagesConfig {
                         permission_add = "<gray>You have added the permission to <gold><bold>%target_name%</gold></bold>.",
                         permission_remove = "<gray>You have removed the permission from <gold><bold>%target_name%</gold></bold>.",
                         permission_dont_have = "<gray>Sorry, but this player doesn't have any permissions.",
-                        gamerule = "<gray>You have <green>succesfully</green> changed the gamerule."
+                        gamerule = "<gray>You have <green>succesfully</green> changed the gamerule.",
+                        tp_self = "<gray>You have been teleported to <gold><bold>%target_name%</gold></bold>.",
+                        tp_other = "<gray>You have teleported <gold><bold>%target_name%</gold></bold> to <gold><bold>%extra_target_name%</gold></bold>.",
+                        tp_self_coords = "<gray>You have been teleported to the coords.",
+                        tp_other_coords = "<gray>You have teleported <gold><bold>%target_name%</gold></bold> to the coords.",
+                        staffmode_enter = "<gray>You have entered the staffmode.",
+                        staffmode_leave = "<gray>You have left the staffmode."
                         ))
             )
         }
@@ -70,4 +76,10 @@ data class MessagesConfig(
     val permission_remove : String,
     val permission_dont_have : String,
     val gamerule : String,
+    val tp_self : String,
+    val tp_other : String,
+    val tp_self_coords : String,
+    val tp_other_coords : String,
+    val staffmode_enter : String,
+    val staffmode_leave : String,
 )

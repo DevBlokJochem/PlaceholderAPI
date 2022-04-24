@@ -3,7 +3,7 @@ package com.survival.core.utils
 import net.minestom.server.MinecraftServer
 import net.minestom.server.entity.Player
 
-fun String.getPlaceholders(player: Player? = null, target: Player? = null): String {
+fun String.getPlaceholders(player: Player? = null, target: Player? = null, extraTarget: Player? = null): String {
 
     var message = this
 
@@ -36,6 +36,11 @@ fun String.getPlaceholders(player: Player? = null, target: Player? = null): Stri
             .replace("target_location_y", target.position.blockY().toString())
             .replace("target_location_z", target.position.blockZ().toString())
             .replace("target_latency", target.latency.toString())
+    }
+
+    if(extraTarget != null) {
+        message = message
+            .replace("%extra_target_name%", extraTarget.username)
     }
 
     return message
