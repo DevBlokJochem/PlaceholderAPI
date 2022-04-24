@@ -1,7 +1,7 @@
 package com.survival.core.events
 
 import com.survival.core.config.gameruleConfig
-import net.minestom.server.MinecraftServer
+import com.survival.core.handler
 import net.minestom.server.event.EventFilter
 import net.minestom.server.event.EventNode
 import net.minestom.server.event.trait.EntityEvent
@@ -9,11 +9,18 @@ import net.minestom.server.event.trait.PlayerEvent
 
 object EventNodes {
 
-    init {
+    fun init() {
         NodePower.onPowerChange(gameruleConfig)
+        handler.addChild(getPvpNode())
+        handler.addChild(getChatNode())
+        handler.addChild(getBreakNode())
+        handler.addChild(getPlaceNode())
+        handler.addChild(getMobNode())
+        handler.addChild(getPickupNode())
+        handler.addChild(getDropNode())
+        handler.addChild(getHungerNode())
+        handler.addChild(getStaffNode())
     }
-
-    val handler = MinecraftServer.getGlobalEventHandler()
 
     private val pvpNode = EventNode.type("pvp-listener", EventFilter.ENTITY)
     private val chatNode = EventNode.type("chat-listener", EventFilter.PLAYER)
@@ -23,36 +30,14 @@ object EventNodes {
     private val pickupNode = EventNode.type("pickup-listener", EventFilter.ENTITY)
     private val dropNode = EventNode.type("drop-listener", EventFilter.PLAYER)
     private val hungerNode = EventNode.type("hunger-listener", EventFilter.PLAYER)
-
-    fun getPvpNode(): EventNode<EntityEvent> {
-        return pvpNode
-    }
-
-    fun getChatNode() : EventNode<PlayerEvent> {
-        return chatNode
-    }
-
-    fun getBreakNode() : EventNode<PlayerEvent> {
-        return breakNode
-    }
-
-    fun getPlaceNode() : EventNode<PlayerEvent> {
-        return placeNode
-    }
-
-    fun getMobNode() : EventNode<EntityEvent> {
-        return mobNode
-    }
-
-    fun getPickupNode() : EventNode<EntityEvent> {
-        return pickupNode
-    }
-
-    fun getDropNode() : EventNode<PlayerEvent> {
-        return dropNode
-    }
-
-    fun getHungerNode() : EventNode<PlayerEvent> {
-        return hungerNode
-    }
+    private val staffNode = EventNode.type("staff-listener", EventFilter.PLAYER)
+    fun getPvpNode(): EventNode<EntityEvent> = pvpNode
+    fun getChatNode() : EventNode<PlayerEvent> = chatNode
+    fun getBreakNode() : EventNode<PlayerEvent> = breakNode
+    fun getPlaceNode() : EventNode<PlayerEvent> = placeNode
+    fun getMobNode() : EventNode<EntityEvent> = mobNode
+    fun getPickupNode() : EventNode<EntityEvent> = pickupNode
+    fun getDropNode() : EventNode<PlayerEvent> = dropNode
+    fun getHungerNode() : EventNode<PlayerEvent> = hungerNode
+    fun getStaffNode() : EventNode<PlayerEvent> = staffNode
 }
