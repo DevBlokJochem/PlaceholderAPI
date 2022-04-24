@@ -26,9 +26,12 @@ private fun WhitelistConfig.updateData() {
 }
 
 fun WhitelistConfig.addUUID(uuid: UUID) {
-
-    if(players.isEmpty()) { return }
-    val list : ArrayList<UUID> = players as ArrayList<UUID>
+    val list : ArrayList<UUID> = if(players.isEmpty()) {
+        ArrayList()
+    }else {
+        players as ArrayList<UUID>
+    }
+    if(list.contains(uuid)) { return }
     list.add(uuid)
     players = list
     updateData()
@@ -38,7 +41,7 @@ fun WhitelistConfig.addUUID(uuid: UUID) {
 fun WhitelistConfig.removeUUID(uuid: UUID) {
 
     if(players.isEmpty()) { return }
-    if(players.contains(uuid)) { return }
+    if(!players.contains(uuid)) { return }
     val list : ArrayList<UUID> = players as ArrayList<UUID>
     list.remove(uuid)
     players = list

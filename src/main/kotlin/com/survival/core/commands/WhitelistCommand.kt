@@ -125,7 +125,7 @@ class WhitelistCommand : Command("fly") {
             if(MinecraftServer.getConnectionManager().getPlayer(it) != null) {
                 message += MinecraftServer.getConnectionManager().getPlayer(it)
             }else {
-                message += it
+                message += "$it "
             }
         }
 

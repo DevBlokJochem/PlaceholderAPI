@@ -31,6 +31,9 @@ object RegisterMessagesConfig {
                         whitelist_empty = "<red>Sorry, but the whitelist is empty. I can't give you a list of the players.",
                         clear_self = "<gray>Your <gold><bold>inventory</bold></gold> has been cleared!",
                         clear_other = "<gray>You have cleared the <gold><bold>inventory</bold></gold> of <gold><bold>%target_name%</gold></bold>.",
+                        permission_add = "<gray>You have added the permission to <gold><bold>%target_name%</gold></bold>.",
+                        permission_remove = "<gray>You have removed the permission from <gold><bold>%target_name%</gold></bold>.",
+                        permission_dont_have = "<gray>Sorry, but this player doesn't have any permissions.",
                         ))
             )
         }
@@ -62,4 +65,7 @@ data class MessagesConfig(
     val whitelist_empty : String,
     val clear_self : String,
     val clear_other : String,
+    val permission_add : String,
+    val permission_remove : String,
+    val permission_dont_have : String,
 )

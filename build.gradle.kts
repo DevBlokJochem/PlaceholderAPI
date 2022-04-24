@@ -35,7 +35,7 @@ dependencies {
     compileOnly(kotlin("reflect"))
 
     // Compile Minestom into project
-    compileOnly("com.github.minestom:minestom:708307dbde")
+    compileOnly("com.github.minestom:minestom:765d6057da")
 
     //json config things
     implementation("com.google.code.gson:gson:2.8.6")

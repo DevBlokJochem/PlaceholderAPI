@@ -1,5 +1,5 @@
 {
-  "entrypoint": "nl.jochem.essentials.EssentialsMain",
-  "name": "Essentials",
+  "entrypoint": "com.survival.core.Main",
+  "name": "survival-core",
   "version": "1.0.0"
 }
