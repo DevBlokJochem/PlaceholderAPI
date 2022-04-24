@@ -1,5 +1,5 @@
 {
   "entrypoint": "com.survival.core.Main",
-  "name": "survival-core",
+  "name": "survivalcore",
   "version": "1.0.0"
 }

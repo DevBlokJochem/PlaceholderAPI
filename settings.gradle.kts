@@ -1,2 +1,2 @@
-rootProject.name = "survival-core"
+rootProject.name = "survivalcore"
 

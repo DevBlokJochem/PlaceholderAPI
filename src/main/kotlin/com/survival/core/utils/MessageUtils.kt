@@ -1,11 +1,9 @@
 package com.survival.core.utils
 
-import net.kyori.adventure.text.Component
 import net.minestom.server.MinecraftServer
 import net.minestom.server.entity.Player
-import world.cepi.kstom.adventure.asMini
 
-fun String.getPlaceholders(player: Player? = null, target: Player? = null): Component {
+fun String.getPlaceholders(player: Player? = null, target: Player? = null): String {
 
     var message = this
 
@@ -40,5 +38,5 @@ fun String.getPlaceholders(player: Player? = null, target: Player? = null): Comp
             .replace("target_latency", target.latency.toString())
     }
 
-    return message.asMini()
+    return message
 }
