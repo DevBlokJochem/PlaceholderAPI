@@ -34,6 +34,7 @@ object RegisterMessagesConfig {
                         permission_add = "<gray>You have added the permission to <gold><bold>%target_name%</gold></bold>.",
                         permission_remove = "<gray>You have removed the permission from <gold><bold>%target_name%</gold></bold>.",
                         permission_dont_have = "<gray>Sorry, but this player doesn't have any permissions.",
+                        gamerule = "<gray>You have <green>succesfully</green> changed the gamerule."
                         ))
             )
         }
@@ -68,4 +69,5 @@ data class MessagesConfig(
     val permission_add : String,
     val permission_remove : String,
     val permission_dont_have : String,
+    val gamerule : String,
 )
