@@ -7,7 +7,7 @@ fun String.getPlaceholders(player: Player? = null, target: Player? = null): Stri
 
     var message = this
 
-    message = "message".replace("%server_name%", MinecraftServer.getBrandName())
+    message = message.replace("%server_name%", MinecraftServer.getBrandName())
         .replace("%server_players_online%", MinecraftServer.getConnectionManager().onlinePlayers.size.toString())
         .replace("%server_version%", MinecraftServer.VERSION_NAME)
         .replace("%server_version_protocol%", MinecraftServer.PROTOCOL_VERSION.toString())
