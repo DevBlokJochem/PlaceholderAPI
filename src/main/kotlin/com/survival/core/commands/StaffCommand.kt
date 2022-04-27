@@ -4,6 +4,7 @@ import com.survival.core.config.loadSavedInventory
 import com.survival.core.config.messagesConfig
 import com.survival.core.config.updateSavedInventory
 import com.survival.core.data.StaffMode
+import com.survival.core.utils.clearInv
 import com.survival.core.utils.msg
 import net.minestom.server.command.CommandSender
 import net.minestom.server.command.builder.Command
@@ -27,6 +28,7 @@ class StaffCommand : Command("staffmode", "sm") {
             StaffMode.staffMode.add(player)
             player.msg(messagesConfig.staffmode_enter)
             player.updateSavedInventory()
+            player.clearInv()
         }else{
             StaffMode.staffMode.remove(player)
             player.msg(messagesConfig.staffmode_leave)

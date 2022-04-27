@@ -32,7 +32,7 @@ class Main : Extension() {
         commandManager.register(ClearCommand())
         commandManager.register(FlyCommand())
         //commandManager.register(GameModeCommand())
-        //commandManager.register(PermissionCommand())
+        commandManager.register(PermissionCommand())
         //commandManager.register(WhitelistCommand())
         //commandManager.register(GameRuleCommand())
         commandManager.register(StaffCommand())
@@ -44,15 +44,15 @@ class Main : Extension() {
         RegisterMessagesConfig
         RegisterWhitelistData
         RegisterPermissionData
-        //RegisterInventoryData.init()
+        RegisterInventoryData.init()
     }
 
     private fun registerEvents() {
         EventNodes.init()
         EventNodes.getBreakNode().addListener(PlayerBlockBreakEvent::class.java) { event -> BlockBreakEvent().onBreak(event) }
         EventNodes.getPickupNode().addListener(PickupItemEvent::class.java) { event -> BlockPickup().onPickup(event) }
-//        EventNodes.getStaffNode().addListener(PlayerLoginEvent::class.java) { event -> Events.onJoin(event) }
-//        EventNodes.getStaffNode().addListener(PlayerDisconnectEvent::class.java) { event -> Events.onLeave(event) }
+        EventNodes.getStaffNode().addListener(PlayerLoginEvent::class.java) { event -> Events.onJoin(event) }
+       EventNodes.getStaffNode().addListener(PlayerDisconnectEvent::class.java) { event -> Events.onLeave(event) }
     }
 
 }

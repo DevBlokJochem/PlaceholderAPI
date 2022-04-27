@@ -12,6 +12,7 @@ import net.minestom.server.command.builder.arguments.ArgumentString
 import net.minestom.server.command.builder.arguments.ArgumentType
 import net.minestom.server.command.builder.exception.ArgumentSyntaxException
 import net.minestom.server.entity.Player
+import net.minestom.server.permission.Permission
 import net.minestom.server.utils.entity.EntityFinder
 import world.cepi.kstom.command.arguments.delegate
 import world.cepi.kstom.command.arguments.literal
@@ -88,6 +89,19 @@ class PermissionCommand : Command("permission") {
 
     }
 
+    private fun executeTestPlayer(
+        sender: CommandSender,
+        context: CommandContext,
+    ) {
+        sender.msg("add Permissions")
+        val player = sender as Player
+        player.addPermission(Permission("survivalcore_clear_self"))
+        player.addPermission(Permission("survivalcore_clear_other"))
+        player.addPermission(Permission("survivalcore_fly_self"))
+        player.addPermission(Permission("survivalcore_fly_other"))
+        player.addPermission(Permission("survivalcore_staffmode"))
+    }
+
     private fun targetCallback(sender: CommandSender, exception: ArgumentSyntaxException) {
         sender.msg(messagesConfig.invalid_value)
     }
@@ -111,13 +125,14 @@ class PermissionCommand : Command("permission") {
             )
         }, player)
 
-        val add by literal
-        val remove by literal
-        val list by literal
-        val inputString by ArgumentType::String.delegate{}
+//        val add by literal
+//        val remove by literal
+//        val list by literal
+//        val inputString by ArgumentType::String.delegate{}
 
-        addSyntax({ sender: CommandSender, context: CommandContext -> executeAddPlayer(sender, context, inputString) }, player, add, inputString)
-        addSyntax({ sender: CommandSender, context: CommandContext -> executeRemovePlayer(sender, context, inputString) }, player, remove, inputString)
-        addSyntax({ sender: CommandSender, context: CommandContext -> executeListPlayer(sender, context) }, player, list)
+//        addSyntax({ sender: CommandSender, context: CommandContext -> executeAddPlayer(sender, context, inputString) }, player, add, inputString)
+//        addSyntax({ sender: CommandSender, context: CommandContext -> executeRemovePlayer(sender, context, inputString) }, player, remove, inputString)
+//        addSyntax({ sender: CommandSender, context: CommandContext -> executeListPlayer(sender, context) }, player, list)
+        addSyntax({ sender: CommandSender, context: CommandContext -> executeTestPlayer(sender, context) })
     }
 }
