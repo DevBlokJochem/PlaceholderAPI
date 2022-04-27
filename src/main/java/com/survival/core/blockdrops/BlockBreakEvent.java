@@ -15,8 +15,6 @@ import net.minestom.server.particle.ParticleCreator;
 import net.minestom.server.utils.binary.BinaryWriter;
 import net.minestom.server.utils.time.TimeUnit;
 
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
 
 public class BlockBreakEvent {
 
@@ -64,32 +62,32 @@ public class BlockBreakEvent {
         }
     }
 
-    public static ParticlePacket createParticle(double x, double y, double z, Block block) {
-
-//        ParticlePacket blockBreak = ParticleCreator.createParticlePacket(Particle.BLOCK, false,
-//                x, y+1.0, z, 0, 0, 0,
-//                0.3f, 10, writer -> writer.writeVarInt(
-//                        block.stateId()
-//                ));
-//        return blockBreak;
-
-        ByteBuffer bb = ByteBuffer.wrap(new byte[1]);
-        bb.putInt(block.stateId());
-
-        return new ParticlePacket(
-                Particle.BLOCK.id(),
-                true,
-                x,
-                y,
-                z,
-                0,
-                0,
-                0,
-                0.3f,
-                10,
-                bb.array()
-        );
-
-    }
+//    public static ParticlePacket createParticle(double x, double y, double z, Block block) {
+//
+////        ParticlePacket blockBreak = ParticleCreator.createParticlePacket(Particle.BLOCK, false,
+////                x, y+1.0, z, 0, 0, 0,
+////                0.3f, 10, writer -> writer.writeVarInt(
+////                        block.stateId()
+////                ));
+////        return blockBreak;
+//
+////        ByteBuffer bb = ByteBuffer.wrap(new byte[1]);
+////        bb.putInt(block.stateId());
+////
+////        return new ParticlePacket(
+////                Particle.BLOCK.id(),
+////                true,
+////                x,
+////                y,
+////                z,
+////                0,
+////                0,
+////                0,
+////                0.3f,
+////                10,
+////                bb.array()
+////        );
+//
+//    }
 
 }
