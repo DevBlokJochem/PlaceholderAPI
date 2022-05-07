@@ -5,13 +5,15 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.instance.block.BlockManager;
 import net.minestom.server.instance.block.rule.vanilla.AxisPlacementRule;
 import net.minestom.server.instance.block.rule.vanilla.RedstonePlacementRule;
+import net.minestom.server.instance.block.rule.vanilla.StairsPlacementRule;
 import net.minestom.server.instance.block.rule.vanilla.WallPlacementRule;
 
 public final class PlacementRules {
 
     public static void init() {
         BlockManager blockManager = MinecraftServer.getBlockManager();
-        blockManager.registerBlockPlacementRule(new RedstonePlacementRule());
+
+        // Axis blocks
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.BONE_BLOCK));
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.HAY_BLOCK));
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.OAK_LOG));
@@ -48,7 +50,15 @@ public final class PlacementRules {
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.STRIPPED_DARK_OAK_WOOD));
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.STRIPPED_CRIMSON_STEM));
         blockManager.registerBlockPlacementRule(new AxisPlacementRule(Block.STRIPPED_WARPED_STEM));
+
+        // Redstone
+        blockManager.registerBlockPlacementRule(new RedstonePlacementRule());
+
+        // Walls
         blockManager.registerBlockPlacementRule(new WallPlacementRule(Block.COBBLESTONE_WALL));
         blockManager.registerBlockPlacementRule(new WallPlacementRule(Block.MOSSY_COBBLESTONE_WALL));
+
+        // Stairs
+        blockManager.registerBlockPlacementRule(new StairsPlacementRule(Block.OAK_STAIRS));
     }
 }

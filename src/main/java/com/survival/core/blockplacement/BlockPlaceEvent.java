@@ -1,6 +1,5 @@
-package com.survival.core.blockdrops;
+package com.survival.core.blockplacement;
 
-import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.event.player.PlayerBlockPlaceEvent;
 
 public class BlockPlaceEvent {

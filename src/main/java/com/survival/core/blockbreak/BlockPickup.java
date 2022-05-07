@@ -1,4 +1,4 @@
-package com.survival.core.blockdrops;
+package com.survival.core.blockbreak;
 
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.item.PickupItemEvent;
