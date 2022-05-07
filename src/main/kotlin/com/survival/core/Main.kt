@@ -7,8 +7,11 @@ import com.survival.core.config.*
 import com.survival.core.events.EventNodes
 import com.survival.core.inventory.Events
 import net.minestom.server.MinecraftServer
+import net.minestom.server.event.inventory.InventoryCloseEvent
 import net.minestom.server.event.item.PickupItemEvent
 import net.minestom.server.event.player.PlayerBlockBreakEvent
+import net.minestom.server.event.player.PlayerBlockInteractEvent
+import net.minestom.server.event.player.PlayerBlockPlaceEvent
 import net.minestom.server.event.player.PlayerDisconnectEvent
 import net.minestom.server.event.player.PlayerLoginEvent
 import net.minestom.server.extensions.Extension
@@ -49,10 +52,13 @@ class Main : Extension() {
 
     private fun registerEvents() {
         EventNodes.init()
-        EventNodes.getBreakNode().addListener(PlayerBlockBreakEvent::class.java) { event -> BlockBreakEvent().onBreak(event) }
-        EventNodes.getPickupNode().addListener(PickupItemEvent::class.java) { event -> BlockPickup().onPickup(event) }
-        EventNodes.getStaffNode().addListener(PlayerLoginEvent::class.java) { event -> Events.onJoin(event) }
-       EventNodes.getStaffNode().addListener(PlayerDisconnectEvent::class.java) { event -> Events.onLeave(event) }
+        EventNodes.getBreakNode().addListener(PlayerBlockBreakEvent::class.java, BlockBreakEvent()::onBreak)
+        EventNodes.getPickupNode().addListener(PickupItemEvent::class.java, BlockPickup()::onPickup)
+        handler.addListener(PlayerLoginEvent::class.java, Events::onJoin)
+        handler.addListener(PlayerDisconnectEvent::class.java, Events::onLeave)
+        EventNodes.getBlockInventoryNode().addListener(PlayerBlockPlaceEvent::class.java, Events::onPlace)
+        EventNodes.getBlockInventoryNode().addListener(InventoryCloseEvent::class.java, Events::onBlockInventoryClose)
+        EventNodes.getBlockInventoryNode().addListener(PlayerBlockInteractEvent::class.java, Events::onClickOnBlock)
     }
 
 }

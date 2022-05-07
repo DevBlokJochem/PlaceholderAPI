@@ -2,6 +2,8 @@ package com.survival.core.config
 
 import com.google.gson.GsonBuilder
 import net.minestom.server.entity.Player
+import net.minestom.server.inventory.Inventory
+import net.minestom.server.inventory.InventoryType
 import net.minestom.server.item.ItemStack
 import org.jglrxavpok.hephaistos.nbt.NBT
 import org.jglrxavpok.hephaistos.nbt.NBTCompound
@@ -24,7 +26,7 @@ object RegisterInventoryData {
                 GsonBuilder()
                     .setPrettyPrinting()
                     .create()
-                    .toJson(InventoryData(players = HashMap<UUID, String>())))
+                    .toJson(InventoryData(players = HashMap<UUID, String>(), enderchest = HashMap<UUID, String>())))
         }
     }
 }
@@ -59,7 +61,7 @@ fun Player.loadSavedInventory() {
     if(inventoryData.players.isEmpty()) { return }
     if(!inventoryData.players.containsKey(uuid)) { return }
     try {
-        val list : List<NBTCompound> = SNBTParser(StringReader(inventoryData.players[uuid])).parse().value as List<NBTCompound>
+        val list : List<NBTCompound> = SNBTParser(StringReader(inventoryData.players[uuid]!!)).parse().value as List<NBTCompound>
         for (i in list.indices) {
             inventory.setItemStack(i, ItemStack.fromItemNBT(list[i]))
         }
@@ -68,10 +70,52 @@ fun Player.loadSavedInventory() {
     }
 }
 
+private fun getEmptyEnderchest() : Inventory {
+    return Inventory(InventoryType.CHEST_6_ROW, "§5§lEnderChest")
+}
+
+fun Player.saveEnderchest(inv : Inventory) {
+    val data = inventoryData
+
+    val map : HashMap<UUID, String> = if(data.enderchest.isEmpty()) {
+        HashMap()
+    }else {
+        data.enderchest as HashMap<UUID, String>
+    }
+
+    map[uuid] = NBT.List(NBTType.TAG_Compound, Arrays.stream(inv.itemStacks)
+        .map(ItemStack::toItemNBT)
+        .toList()).toSNBT()
+
+    data.enderchest = map
+    data.updateData()
+}
+fun Player.openEnderchest() {
+    if(inventoryData.enderchest.isEmpty()) {
+        openInventory(getEmptyEnderchest())
+        return
+    }
+    if(!inventoryData.enderchest.containsKey(uuid)) {
+        openInventory(getEmptyEnderchest())
+        return
+    }
+    val inv = getEmptyEnderchest()
+    try {
+        val list : List<NBTCompound> = SNBTParser(StringReader(inventoryData.enderchest[uuid])).parse().value as List<NBTCompound>
+        for (i in list.indices) {
+            inv.setItemStack(i, ItemStack.fromItemNBT(list[i]))
+        }
+    } catch (e: NBTException) {
+        e.printStackTrace()
+    }
+    openInventory(inv)
+}
+
 val inventoryData = GsonBuilder()
     .setPrettyPrinting()
     .create()!!.fromJson(File("data/inventory.json").readText(), InventoryData::class.java)!!
 
 data class InventoryData(
     var players: Map<UUID, String>,
+    var enderchest: Map<UUID, String>,
 )
