@@ -2,7 +2,6 @@ package com.survival.core.config
 
 import com.google.gson.GsonBuilder
 import com.survival.core.commands.GameRule
-import com.survival.core.events.NodePower
 import java.io.File
 
 object RegisterGameRuleConfig {
@@ -33,7 +32,6 @@ object RegisterGameRuleConfig {
 }
 
 private fun GameRuleConfig.updateData() {
-    NodePower.onPowerChange(this)
     File("configs/gamerules.json").writeText(
         GsonBuilder()
             .setPrettyPrinting()

@@ -5,12 +5,13 @@ import com.survival.core.handler
 import net.minestom.server.event.EventFilter
 import net.minestom.server.event.EventNode
 import net.minestom.server.event.trait.EntityEvent
+import net.minestom.server.event.trait.InventoryEvent
 import net.minestom.server.event.trait.PlayerEvent
+import net.minestom.server.inventory.Inventory
 
 object EventNodes {
 
     fun init() {
-        NodePower.onPowerChange(gameruleConfig)
         handler.addChild(getPvpNode())
         handler.addChild(getChatNode())
         handler.addChild(getBreakNode())
@@ -20,6 +21,7 @@ object EventNodes {
         handler.addChild(getDropNode())
         handler.addChild(getHungerNode())
         handler.addChild(getStaffNode())
+        handler.addChild(getBlockInventoryNode())
     }
 
     private val pvpNode = EventNode.type("pvp-listener", EventFilter.ENTITY)
@@ -31,6 +33,7 @@ object EventNodes {
     private val dropNode = EventNode.type("drop-listener", EventFilter.PLAYER)
     private val hungerNode = EventNode.type("hunger-listener", EventFilter.PLAYER)
     private val staffNode = EventNode.type("staff-listener", EventFilter.PLAYER)
+    private val blockInventoryNode = EventNode.type("blockinventory-listener", EventFilter.PLAYER)
     fun getPvpNode(): EventNode<EntityEvent> = pvpNode
     fun getChatNode() : EventNode<PlayerEvent> = chatNode
     fun getBreakNode() : EventNode<PlayerEvent> = breakNode
@@ -40,4 +43,5 @@ object EventNodes {
     fun getDropNode() : EventNode<PlayerEvent> = dropNode
     fun getHungerNode() : EventNode<PlayerEvent> = hungerNode
     fun getStaffNode() : EventNode<PlayerEvent> = staffNode
+    fun getBlockInventoryNode() : EventNode<PlayerEvent> = blockInventoryNode
 }
