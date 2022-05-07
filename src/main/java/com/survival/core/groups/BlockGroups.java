@@ -45,9 +45,6 @@ public interface BlockGroups {
 
     }};
 
-
-
-
     ArrayList<Block> INVENTORY_BLOCKS = new ArrayList<Block>() {{
             add(Block.CRAFTING_TABLE);
             add(Block.FURNACE);
@@ -69,6 +66,7 @@ public interface BlockGroups {
             add(Block.DISPENSER);
             add(Block.DROPPER);
             add(Block.BARREL);
+            addAll(SHULKERS);
 
     }};
 

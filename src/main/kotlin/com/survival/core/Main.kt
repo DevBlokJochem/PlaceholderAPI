@@ -10,6 +10,7 @@ import com.survival.core.config.*
 import com.survival.core.events.EventNodes
 import com.survival.core.inventory.Events
 import com.survival.core.blockplacement.PlacementRules
+import com.survival.core.groups.BlockGroups
 import net.minestom.server.MinecraftServer
 import net.minestom.server.event.inventory.InventoryCloseEvent
 import net.minestom.server.event.item.PickupItemEvent
