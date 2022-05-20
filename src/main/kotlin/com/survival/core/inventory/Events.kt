@@ -1,6 +1,7 @@
 package com.survival.core.inventory
 
 import com.survival.core.config.*
+import com.survival.core.groups.BlockGroups
 import net.minestom.server.entity.Player
 import net.minestom.server.entity.metadata.minecart.ChestMinecartMeta
 import net.minestom.server.event.inventory.InventoryCloseEvent
@@ -23,7 +24,7 @@ object Events {
     }
 
     fun onPlace(event: PlayerBlockPlaceEvent) {
-        if(event.player.instance!!.getBlock(event.blockPosition.relative(event.blockFace.oppositeFace)).registry().material() == Material.ENDER_CHEST && !event.player.isSneaking) {
+        if(BlockGroups.INVENTORY_BLOCKS.contains(event.player.instance!!.getBlock(event.blockPosition.relative(event.blockFace.oppositeFace)).registry().material() == Material.ENDER_CHEST && !event.player.isSneaking) {
             event.isCancelled = true
         }
     }
