@@ -73,6 +73,7 @@ public interface MaterialGroups {
         add(Material.DISPENSER);
         add(Material.DROPPER);
         add(Material.BARREL);
+        add(Material.ENDER_CHEST);
         addAll(SHULKERS);
 
     }};

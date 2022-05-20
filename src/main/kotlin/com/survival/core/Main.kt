@@ -19,6 +19,7 @@ import net.minestom.server.event.player.PlayerBlockPlaceEvent
 import net.minestom.server.event.player.PlayerDisconnectEvent
 import net.minestom.server.event.player.PlayerLoginEvent
 import net.minestom.server.extensions.Extension
+import net.minestom.server.extras.MojangAuth
 import net.minestom.server.extras.optifine.OptifineSupport
 
 import java.io.File
@@ -31,7 +32,7 @@ class Main : Extension() {
         registerEvents()
 
         PlacementRules.init()
-
+        MojangAuth.init()
         OptifineSupport.enable()
 
 
