@@ -32,7 +32,6 @@ class Main : Extension() {
         registerEvents()
 
         PlacementRules.init()
-        MojangAuth.init()
         OptifineSupport.enable()
 
 
