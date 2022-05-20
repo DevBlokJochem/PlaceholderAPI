@@ -1,6 +1,6 @@
 package com.survival.core.blockbreak;
 
-import com.survival.core.groups.BlockGroups;
+import com.survival.core.groups.MaterialGroups;
 import net.minestom.server.entity.ItemEntity;
 import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.instance.block.Block;
@@ -38,24 +38,50 @@ public class BlockBreakEvent {
         for (int i = 0; i < 6; i++) {
 
             BlockFace face = BlockFace.values()[i];
+            String facingVal = "";
+            String facingValOpposite = "";
+            if (face == BlockFace.NORTH) { facingVal = "north"; facingValOpposite = "south"; }
+            if (face == BlockFace.SOUTH) { facingVal = "south"; facingValOpposite = "north"; }
+            if (face == BlockFace.EAST) { facingVal = "east"; facingValOpposite = "west"; }
+            if (face == BlockFace.WEST) { facingVal = "west"; facingValOpposite = "east"; }
 
-            if (face == BlockFace.TOP) {
-                if (BlockGroups.TOP_CHILD_BLOCKS.contains(event.getBlock())) {
-                    event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
-                }
+            Block childBlock = event.getInstance().getBlock(event.getBlockPosition().relative(BlockFace.values()[i]));
 
-            } else if (face == BlockFace.NORTH || face == BlockFace.SOUTH || face == BlockFace.EAST || face == BlockFace.WEST) {
-                if (BlockGroups.SIDE_CHILD_BLOCKS.contains(event.getBlock())) {
-                    if (event.getBlock().possibleStates().contains(i)) {
+            if (!childBlock.isAir()) {
+                if (face == BlockFace.TOP) {
+                    if (MaterialGroups.TOP_CHILD_BLOCKS.contains(childBlock.registry().material())) {
+                        if (!childBlock.properties().containsKey("facing")) {
+                            event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
+                        }
+                    }
+
+                } else if (face == BlockFace.NORTH || face == BlockFace.SOUTH || face == BlockFace.EAST || face == BlockFace.WEST) {
+                    System.out.println(childBlock.registry().material().toString());
+
+                    if (MaterialGroups.SIDE_CHILD_BLOCKS.contains(childBlock.registry().material())) {
+
+                        System.out.println(childBlock.getProperty(facingVal));
+
+                        if (childBlock.properties().containsKey("facing")) {
+                            if (childBlock.getProperty("facing").contains(facingVal)) {
+                                event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
+                            }
+                        }
+
+                        //                    if (childBlock == Block.VINE && childBlock.getProperty(facingVal).contains("true")) {
+                        //                        event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
+                        //                    } else if (childBlock.getProperty("facing").contains(facingVal)) {
+                        //                        event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
+                        //                    }
+
+                    }
+
+                } else if (BlockFace.values()[i] == BlockFace.BOTTOM) {
+                    if (MaterialGroups.BOTTOM_CHILD_BLOCKS.contains(childBlock.registry().material())) {
                         event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
                     }
-                }
 
-            } else if (BlockFace.values()[i] == BlockFace.BOTTOM) {
-                if (BlockGroups.BOTTOM_CHILD_BLOCKS.contains(event.getBlock())) {
-                    event.getInstance().breakBlock(event.getPlayer(), event.getBlockPosition().relative(BlockFace.values()[i]));
                 }
-
             }
 
 //            if (BlockGroups.CHILD_BLOCKS.contains(event.getInstance().getBlock(event.getBlockPosition().relative(BlockFace.values()[i])))) {

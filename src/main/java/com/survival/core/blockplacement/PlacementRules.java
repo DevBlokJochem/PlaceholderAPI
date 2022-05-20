@@ -60,5 +60,9 @@ public final class PlacementRules {
 
         // Stairs
         blockManager.registerBlockPlacementRule(new StairsPlacementRule(Block.OAK_STAIRS));
+
+        // Misc
+        blockManager.registerBlockPlacementRule(new TorchPlacementRule(Block.TORCH));
+
     }
 }
