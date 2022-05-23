@@ -34,7 +34,6 @@ class Main : Extension() {
         PlacementRules.init()
         OptifineSupport.enable()
 
-
         println("survival core enabled!")
     }
 
