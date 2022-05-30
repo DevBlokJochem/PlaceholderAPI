@@ -1,2 +1,2 @@
-rootProject.name = "survivalcore"
+rootProject.name = "PlaceholderAPI"
 

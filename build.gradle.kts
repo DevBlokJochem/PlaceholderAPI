@@ -35,14 +35,10 @@ dependencies {
     compileOnly(kotlin("reflect"))
 
     // Compile Minestom into project
-    compileOnly("com.github.minestom:minestom:765d6057da")
+    implementation("com.github.Minestom:Minestom:-SNAPSHOT")
 
     //json config things
     implementation("com.google.code.gson:gson:2.8.6")
-
-    //message utils
-    implementation("com.github.Project-Cepi:KStom:e1158a629f")
-    implementation("net.kyori:adventure-api:4.9.3")
 
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
