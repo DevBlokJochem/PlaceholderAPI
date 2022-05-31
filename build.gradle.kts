@@ -40,8 +40,6 @@ dependencies {
     //json config things
     implementation("com.google.code.gson:gson:2.8.6")
 
-    implementation("com.github.Project-Cepi:KStom:-SNAPSHOT")
-
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 }
