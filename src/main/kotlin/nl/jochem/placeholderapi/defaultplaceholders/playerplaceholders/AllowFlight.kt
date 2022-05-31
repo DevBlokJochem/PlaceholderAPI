@@ -2,7 +2,7 @@ package nl.jochem.placeholderapi.defaultplaceholders.playerplaceholders
 
 import net.kyori.adventure.text.Component
 import net.minestom.server.entity.Player
-import nl.jochem.placeholderapi.core.Placeholder
+import nl.jochem.placeholderapi.api.Placeholder
 
 object AllowFlight : Placeholder {
     override fun getName(): String {

@@ -18,7 +18,8 @@ object RegisterMessagesConfig {
                         usage = "&c/papi \n list \n download <name> \n remove <name>",
                         placeholder_exists = "&cSorry, but this placeholder already exists.",
                         download_placeholder = "&aYou have downloaded the placeholder.",
-                        remove_placeholder = "&aYou have removed the placeholder."
+                        remove_placeholder = "&aYou have removed the placeholder.",
+                        invalid_name = "cEnter a valid placeholder name."
                     ))
             )
         }
@@ -38,4 +39,5 @@ data class MessagesConfig(
     val placeholder_exists : String,
     val download_placeholder : String,
     val remove_placeholder : String,
+    val invalid_name : String,
 )

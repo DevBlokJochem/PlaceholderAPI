@@ -5,6 +5,7 @@ import net.minestom.server.command.builder.Command
 import net.minestom.server.command.builder.CommandContext
 import net.minestom.server.command.builder.arguments.ArgumentString
 import net.minestom.server.command.builder.arguments.ArgumentType.Literal
+import net.minestom.server.command.builder.exception.ArgumentSyntaxException
 import net.minestom.server.command.builder.suggestion.SuggestionEntry
 import net.minestom.server.entity.Player
 import nl.jochem.placeholderapi.api.PlaceholderAPI
@@ -13,14 +14,16 @@ import nl.jochem.placeholderapi.configs.addPlaceholder
 import nl.jochem.placeholderapi.configs.messagesConfig
 import nl.jochem.placeholderapi.configs.placeholdersConfig
 import nl.jochem.placeholderapi.configs.removePlaceholder
-import nl.jochem.placeholderapi.core.PlaceholderGroup
-import nl.jochem.placeholderapi.defaultplaceholders.PlayerItemstackPlaceholderGroup
-import nl.jochem.placeholderapi.defaultplaceholders.PlayerPlaceholderGroup
+import nl.jochem.placeholderapi.api.PlaceholderGroup
 
 class PapiCommand : Command("placeholder", "papi") {
 
     private fun usage(sender: CommandSender, context: CommandContext) {
         sender.msg(messagesConfig.usage)
+    }
+
+    private fun nameCallback(sender: CommandSender, exception: ArgumentSyntaxException) {
+        sender.msg(messagesConfig.invalid_name)
     }
 
     private fun getDefaultPlaceholder(inputGroup: String): PlaceholderGroup? {
@@ -85,15 +88,33 @@ class PapiCommand : Command("placeholder", "papi") {
         val download = Literal("download")
         val remove = Literal("remove")
         val activeGroupsName = ArgumentString("activeGroupName")
-        PlaceholderAPI.getPlaceholders().forEach {
-            activeGroupsName.setSuggestionCallback { _, _, suggestion -> suggestion.addEntry(SuggestionEntry(it.getPrefix())) }
-        }
-        val defaultGroupsName = ArgumentString("defaultGroupName")
-        getDefaultPlaceholders().forEach {
-            if(!PlaceholderAPI.getPlaceholders().contains(it)) {
-                defaultGroupsName.setSuggestionCallback { _, _, suggestion -> suggestion.addEntry(SuggestionEntry(it.getPrefix())) }
+        activeGroupsName.setSuggestionCallback { _, _, suggestion ->
+            placeholdersConfig.placeholders.forEach {
+                 suggestion.addEntry(SuggestionEntry(it))
             }
         }
+        val defaultGroupsName = ArgumentString("defaultGroupName")
+        defaultGroupsName.setSuggestionCallback { _, _, suggestion ->
+            getDefaultPlaceholders().forEach {
+                if(!PlaceholderAPI.getPlaceholders().contains(it)) {
+                    suggestion.addEntry(SuggestionEntry(it.getPrefix()))
+                }
+            }
+        }
+
+        setArgumentCallback({ sender: CommandSender, exception: ArgumentSyntaxException ->
+            nameCallback(
+                sender,
+                exception
+            )
+        }, activeGroupsName)
+        setArgumentCallback({ sender: CommandSender, exception: ArgumentSyntaxException ->
+            nameCallback(
+                sender,
+                exception
+            )
+        }, defaultGroupsName)
+
         addSyntax({ sender: CommandSender,_ -> executeOnList(sender) }, list)
         addSyntax({ sender: CommandSender, context: CommandContext -> executeOnDownload(sender, context, defaultGroupsName) }, download, defaultGroupsName)
         addSyntax({ sender: CommandSender, context: CommandContext -> executeOnRemove(sender, context, activeGroupsName) }, remove, activeGroupsName)

@@ -8,14 +8,15 @@ import nl.jochem.placeholderapi.configs.RegisterMessagesConfig
 import nl.jochem.placeholderapi.configs.RegisterPlaceholdersConfig
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerItemstackPlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerPlaceholderGroup
+import nl.jochem.placeholderapi.defaultplaceholders.ServerPlaceholderGroup
 import java.io.File
 
 class Main : Extension() {
 
     override fun initialize() {
         registerConfigs()
-        registerCommands()
         registerPlaceholders()
+        registerCommands()
         println("PlaceholderAPI enabled!")
     }
 
@@ -38,5 +39,6 @@ class Main : Extension() {
     private fun registerPlaceholders() {
         PlaceholderAPI.setDefaultPlaceholders(PlayerPlaceholderGroup)
         PlaceholderAPI.setDefaultPlaceholders(PlayerItemstackPlaceholderGroup)
+        PlaceholderAPI.setDefaultPlaceholders(ServerPlaceholderGroup)
     }
 }

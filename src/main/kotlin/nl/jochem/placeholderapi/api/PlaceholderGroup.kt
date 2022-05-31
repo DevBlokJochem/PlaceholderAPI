@@ -1,4 +1,4 @@
-package nl.jochem.placeholderapi.core
+package nl.jochem.placeholderapi.api
 
 import net.kyori.adventure.text.Component
 import net.minestom.server.entity.Player

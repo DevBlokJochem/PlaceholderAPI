@@ -1,11 +1,7 @@
 package nl.jochem.placeholderapi.defaultplaceholders
 
-import nl.jochem.placeholderapi.core.Placeholder
-import nl.jochem.placeholderapi.core.PlaceholderGroup
-import nl.jochem.placeholderapi.defaultplaceholders.playeritemstackplaceholders.ArmorBootsName
-import nl.jochem.placeholderapi.defaultplaceholders.playeritemstackplaceholders.ArmorChestplateName
-import nl.jochem.placeholderapi.defaultplaceholders.playeritemstackplaceholders.ArmorHelmetName
-import nl.jochem.placeholderapi.defaultplaceholders.playeritemstackplaceholders.ArmorLeggingsName
+import nl.jochem.placeholderapi.api.Placeholder
+import nl.jochem.placeholderapi.api.PlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.playerplaceholders.*
 
 object PlayerPlaceholderGroup : PlaceholderGroup {

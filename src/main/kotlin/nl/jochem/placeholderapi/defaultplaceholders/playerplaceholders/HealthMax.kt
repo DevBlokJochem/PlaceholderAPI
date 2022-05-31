@@ -2,7 +2,7 @@ package nl.jochem.placeholderapi.defaultplaceholders.playerplaceholders
 
 import net.kyori.adventure.text.Component
 import net.minestom.server.entity.Player
-import nl.jochem.placeholderapi.core.Placeholder
+import nl.jochem.placeholderapi.api.Placeholder
 
 object HealthMax : Placeholder {
     override fun getName(): String {
@@ -15,6 +15,6 @@ object HealthMax : Placeholder {
     }
 
     override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(AllowFlight.getPlaceholderString(player))
+        return Component.text(getPlaceholderString(player))
     }
 }

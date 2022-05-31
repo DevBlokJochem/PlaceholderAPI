@@ -1,7 +1,7 @@
 package nl.jochem.placeholderapi.defaultplaceholders
 
-import nl.jochem.placeholderapi.core.Placeholder
-import nl.jochem.placeholderapi.core.PlaceholderGroup
+import nl.jochem.placeholderapi.api.Placeholder
+import nl.jochem.placeholderapi.api.PlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.playeritemstackplaceholders.*
 
 object PlayerItemstackPlaceholderGroup : PlaceholderGroup {
