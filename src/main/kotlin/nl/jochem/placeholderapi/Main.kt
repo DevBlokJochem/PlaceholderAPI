@@ -5,6 +5,7 @@ import net.minestom.server.extensions.Extension
 import nl.jochem.placeholderapi.api.PlaceholderAPI
 import nl.jochem.placeholderapi.command.PapiCommand
 import nl.jochem.placeholderapi.configs.RegisterMessagesConfig
+import nl.jochem.placeholderapi.configs.RegisterPlaceholdersConfig
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerItemstackPlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerPlaceholderGroup
 import java.io.File
@@ -31,11 +32,11 @@ class Main : Extension() {
     private fun registerConfigs() {
         if(!File("extensions/placeholderapi").exists()) { File("extensions/placeholderapi").mkdirs() }
         RegisterMessagesConfig
+        RegisterPlaceholdersConfig
     }
 
     private fun registerPlaceholders() {
-        PlaceholderAPI.setPlaceholders(PlayerPlaceholderGroup)
-        PlaceholderAPI.setPlaceholders(PlayerItemstackPlaceholderGroup)
-
+        PlaceholderAPI.setDefaultPlaceholders(PlayerPlaceholderGroup)
+        PlaceholderAPI.setDefaultPlaceholders(PlayerItemstackPlaceholderGroup)
     }
 }
