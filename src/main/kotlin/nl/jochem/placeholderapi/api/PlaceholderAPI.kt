@@ -63,7 +63,7 @@ object PlaceholderAPI {
     }
 
     fun translatePlaceholdersToComponent(player : Player? = null, inputString: String) : Component {
-        if(placeholderGroups.isEmpty()) { return Component.text(inputString); }
+        if(placeholderGroups.isEmpty()) { return Component.text(inputString.replace("&", "§")); }
         var newComponent : Component = Component.text(inputString)
         placeholderGroups.forEach {
             if(newComponent.contains(Component.text(it.getPrefix()))) {
