@@ -37,6 +37,9 @@ dependencies {
     // Compile Minestom into project
     implementation("com.github.Minestom:Minestom:-SNAPSHOT")
 
+    // Message utils
+    implementation("net.kyori:adventure-api:4.9.3")
+
     //json config things
     implementation("com.google.code.gson:gson:2.8.6")
 
