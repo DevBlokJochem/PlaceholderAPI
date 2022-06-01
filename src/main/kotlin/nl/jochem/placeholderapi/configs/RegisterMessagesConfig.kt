@@ -17,6 +17,7 @@ object RegisterMessagesConfig {
                         prefix = "&b[&b&lPapi&b] ",
                         usage = "&c/papi \n list \n download <name> \n remove <name>",
                         placeholder_exists = "&cSorry, but this placeholder already exists.",
+                        missing_placeholderPlugin = "&cSorry, I cant register the placeholder %placeholder_name%, because I cant find the extension.",
                         download_placeholder = "&aYou have downloaded the placeholder.",
                         remove_placeholder = "&aYou have removed the placeholder.",
                         invalid_name = "cEnter a valid placeholder name."
@@ -37,6 +38,7 @@ data class MessagesConfig(
     //command messages
     val usage : String,
     val placeholder_exists : String,
+    val missing_placeholderPlugin : String,
     val download_placeholder : String,
     val remove_placeholder : String,
     val invalid_name : String,

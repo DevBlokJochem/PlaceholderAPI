@@ -7,6 +7,7 @@ import nl.jochem.placeholderapi.configs.messagesConfig
 import nl.jochem.placeholderapi.configs.placeholdersConfig
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerItemstackPlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerPlaceholderGroup
+import java.io.File
 
 object PlaceholderAPI {
 
@@ -38,6 +39,10 @@ object PlaceholderAPI {
                 println(translatePlaceholdersToString(inputString = messagesConfig.placeholder_exists))
                 return
             }
+        }
+        if(placeholderGroup.getPluginName() != "null" && !File("extensions/${placeholderGroup.getPluginName()}").exists()) {
+            println(translatePlaceholdersToString(inputString = messagesConfig.missing_placeholderPlugin.replace("%placeholder_name%", placeholderGroup.getPluginName())))
+            return
         }
         placeholderGroups.add(placeholderGroup)
         placeholderGroup.register()

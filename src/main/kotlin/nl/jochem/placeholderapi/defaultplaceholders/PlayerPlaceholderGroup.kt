@@ -10,6 +10,9 @@ object PlayerPlaceholderGroup : PlaceholderGroup {
     }
 
     override val placeholderGroups: ArrayList<Placeholder> = ArrayList()
+    override fun getPluginName(): String {
+        return "null"
+    }
 
     override fun register() {
         placeholderGroups.add(AllowFlight)
