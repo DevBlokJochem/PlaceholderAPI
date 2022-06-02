@@ -13,8 +13,4 @@ object HealthMax : Placeholder {
         if(player != null) { return player.maxHealth.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

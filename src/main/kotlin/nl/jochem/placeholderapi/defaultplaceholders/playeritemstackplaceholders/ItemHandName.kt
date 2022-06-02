@@ -13,8 +13,4 @@ object ItemHandName : Placeholder {
         if(player != null) { return player.itemInMainHand.displayName.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

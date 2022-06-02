@@ -14,8 +14,4 @@ object OnlineWorld : Placeholder {
         if(player != null) { return player.instance!!.players.size.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

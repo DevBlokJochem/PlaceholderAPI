@@ -9,16 +9,10 @@ interface PlaceholderGroup {
     fun getPluginName() : String
     fun register()
     fun replaceHolderString(player : Player? = null, inputMessage : String) : String {
+        if(!inputMessage.contains("%${getPrefix()}")) { return inputMessage }
         var message = inputMessage
         placeholderGroups.forEach {
             message = message.replace("%${getPrefix()}_${it.getName()}%", it.getPlaceholderString(player))
-        }
-        return message
-    }
-    fun replaceHolderComponent(player : Player? = null, inputMessage : Component) : Component {
-        var message = inputMessage
-        placeholderGroups.forEach {
-            message = message.replaceText("%${getPrefix()}_${it.getName()}%", it.getPlaceholderComponent(player))
         }
         return message
     }

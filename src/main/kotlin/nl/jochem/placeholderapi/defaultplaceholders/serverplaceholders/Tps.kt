@@ -14,8 +14,4 @@ object Tps : Placeholder {
         if(player != null) { return MinecraftServer.TICK_PER_SECOND.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

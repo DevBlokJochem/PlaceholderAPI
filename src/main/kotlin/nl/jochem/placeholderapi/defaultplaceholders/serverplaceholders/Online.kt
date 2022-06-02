@@ -14,8 +14,4 @@ object Online : Placeholder {
         if(player != null) { return MinecraftServer.getConnectionManager().onlinePlayers.size.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

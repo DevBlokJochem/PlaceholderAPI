@@ -14,8 +14,4 @@ object Version : Placeholder {
         if(player != null) { return MinecraftServer.VERSION_NAME }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

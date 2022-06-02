@@ -13,8 +13,4 @@ object ArmorChestplateMaterial : Placeholder {
         if(player != null) { return player.chestplate.material().toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

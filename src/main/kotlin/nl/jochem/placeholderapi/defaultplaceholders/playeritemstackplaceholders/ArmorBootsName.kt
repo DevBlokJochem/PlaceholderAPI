@@ -13,8 +13,4 @@ object ArmorBootsName : Placeholder {
         if(player != null) { return player.boots.displayName.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

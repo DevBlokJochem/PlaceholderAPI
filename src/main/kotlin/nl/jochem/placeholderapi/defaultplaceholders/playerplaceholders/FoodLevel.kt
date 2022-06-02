@@ -13,8 +13,4 @@ object FoodLevel : Placeholder {
         if(player != null) { return player.food.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

@@ -13,8 +13,4 @@ object FlySpeed : Placeholder {
         if(player != null) { return player.flyingSpeed.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

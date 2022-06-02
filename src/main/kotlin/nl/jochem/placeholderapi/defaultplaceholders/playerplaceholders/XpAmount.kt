@@ -13,8 +13,4 @@ object XpAmount : Placeholder {
         if(player != null) { return player.exp.toString() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }

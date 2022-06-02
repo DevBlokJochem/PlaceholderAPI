@@ -14,8 +14,4 @@ object Name : Placeholder {
         if(player != null) { return MinecraftServer.getBrandName() }
         return "null"
     }
-
-    override fun getPlaceholderComponent(player: Player?): Component {
-        return Component.text(getPlaceholderString(player))
-    }
 }
