@@ -54,11 +54,11 @@ object PlaceholderAPI {
     }
 
     fun translatePlaceholdersToString(player : Player? = null, inputString : String) : String {
-        if(placeholderGroups.isEmpty()) { return inputString; }
-        var newString = inputString
+        var newString = inputString.replace("&", "§")
+        if(placeholderGroups.isEmpty()) { return newString; }
         placeholderGroups.forEach {
             newString = it.replaceHolderString(player, newString)
         }
-        return newString.replace("&", "§")
+        return newString
     }
 }
