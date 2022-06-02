@@ -23,6 +23,8 @@ object PlayerItemstackPlaceholderGroup : PlaceholderGroup {
         placeholderGroups.add(ArmorLeggingsMaterial)
         placeholderGroups.add(ArmorBootsName)
         placeholderGroups.add(ArmorBootsMaterial)
+        placeholderGroups.add(ItemHandMaterial)
+        placeholderGroups.add(ItemHandName)
     }
 
 }
