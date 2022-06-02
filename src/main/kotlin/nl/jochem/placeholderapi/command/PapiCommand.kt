@@ -122,10 +122,6 @@ class PapiCommand : Command("placeholder", "papi") {
 
     private fun CommandSender.msg(inputMessage: String) {
         val newMessage = messagesConfig.prefix + inputMessage
-        if(this is Player) {
-            sendMessage(PlaceholderAPI.translatePlaceholdersToComponent(player = this, inputString = newMessage))
-        }else{
-            sendMessage(PlaceholderAPI.translatePlaceholdersToString(player = null, inputString = newMessage))
-        }
+        sendMessage(PlaceholderAPI.translatePlaceholdersToString(player = this as Player, inputString = newMessage))
     }
 }
