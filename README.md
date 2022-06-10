@@ -21,6 +21,7 @@
 # Default placeholders
 
 The only thing you have todo is downloading the placeholder in game.
+  
 [Latest release](https://github.com/DevBlokJochem/Placeholderapi/releases/tag/latest)
   
 - Player
