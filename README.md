@@ -26,7 +26,7 @@ You can use this permission to modify every aspect of the commands:
 # Default placeholders
 
 The only thing you have todo is downloading the placeholder in game.
-
+  
 - Player
     - %player_allow_flight%
     - %player_fly_speed%
