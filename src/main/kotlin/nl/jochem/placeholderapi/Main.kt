@@ -17,12 +17,12 @@ class Main : Extension() {
         registerConfigs()
         registerPlaceholders()
         registerCommands()
-        println("PlaceholderAPI enabled!")
+        println("PlaceholderAPI is now enabled!")
     }
 
     override fun terminate() {
 
-        println("PlaceholderAPI disabled!")
+        println("PlaceholderAPI is now disabled!")
     }
 
     private fun registerCommands() {

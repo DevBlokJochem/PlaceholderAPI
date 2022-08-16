@@ -14,6 +14,7 @@ object RegisterMessagesConfig {
                     .setPrettyPrinting()
                     .create()
                     .toJson(MessagesConfig(
+                        invalid_permission = "&cSorry, but you don't have the right permissions.",
                         prefix = "&b[&b&lPapi&b] ",
                         usage = "&c/papi \n list \n download <name> \n remove <name>",
                         placeholder_exists = "&cSorry, but this placeholder already exists.",
@@ -33,6 +34,8 @@ val messagesConfig = GsonBuilder()
     .create()!!.fromJson(File(fileName).readText(), MessagesConfig::class.java)!!
 
 data class MessagesConfig(
+    //permission
+    val invalid_permission : String,
     //prefix
     val prefix : String,
     //command messages

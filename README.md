@@ -1,5 +1,10 @@
 # PlaceholderAPI
 
+# Permissions
+
+You can use this permission to modify every aspect of the commands:
+- placeholderapi_modify
+
 # Usage
 - get message with placeholders
   - ```PlaceholderAPI.translatePlaceholdersToString(Player?, String)```

@@ -3,6 +3,7 @@ package nl.jochem.placeholderapi.command
 import net.minestom.server.command.CommandSender
 import net.minestom.server.command.builder.Command
 import net.minestom.server.command.builder.CommandContext
+import net.minestom.server.command.builder.CommandSyntax
 import net.minestom.server.command.builder.arguments.ArgumentString
 import net.minestom.server.command.builder.arguments.ArgumentType.Literal
 import net.minestom.server.command.builder.exception.ArgumentSyntaxException
@@ -47,6 +48,7 @@ class PapiCommand : Command("placeholder", "papi") {
     private fun executeOnList(
         sender: CommandSender
     ) {
+        if(!sender.hasPermission("placeholderapi_modify")) { return sender.msg(messagesConfig.invalid_permission) }
         var message = ""
         PlaceholderAPI.getPlaceholders().forEach {
             message += it.getPrefix() + " "
@@ -59,18 +61,19 @@ class PapiCommand : Command("placeholder", "papi") {
         context: CommandContext,
         defaultGroupsName: ArgumentString
     ) {
+        if(!sender.hasPermission("placeholderapi_modify")) { return sender.msg(messagesConfig.invalid_permission) }
         if(getDefaultPlaceholder(context[defaultGroupsName]) == null) { return }
         placeholdersConfig.addPlaceholder(context[defaultGroupsName])
         PlaceholderAPI.setPlaceholders(getDefaultPlaceholder(context[defaultGroupsName])!!)
         sender.msg(messagesConfig.download_placeholder)
     }
 
-
     private fun executeOnRemove(
         sender: CommandSender,
         context: CommandContext,
         activeGroupsName: ArgumentString
     ) {
+        if(!sender.hasPermission("placeholderapi_modify")) { return sender.msg(messagesConfig.invalid_permission) }
         if(getActivePlaceholder(context[activeGroupsName]) == null) { return }
         placeholdersConfig.removePlaceholder(context[activeGroupsName])
         PlaceholderAPI.removePlaceholders(getActivePlaceholder(context[activeGroupsName])!!)

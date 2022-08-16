@@ -22,7 +22,7 @@ object RegisterPlaceholdersConfig {
 
 }
 
-private fun PlaceholdersConfig.update(config : PlaceholdersConfig) {
+private fun PlaceholdersConfig.update() {
     File(fileName).writeText(
         GsonBuilder()
             .setPrettyPrinting()
@@ -33,13 +33,13 @@ private fun PlaceholdersConfig.update(config : PlaceholdersConfig) {
 fun PlaceholdersConfig.addPlaceholder(name : String) {
     if(placeholders.contains(name)) { return }
     placeholders.add(name)
-    update(this)
+    update()
 }
 
 fun PlaceholdersConfig.removePlaceholder(name : String) {
     if(!placeholders.contains(name)) { return }
     placeholders.remove(name)
-    update(this)
+    update()
 }
 
 val placeholdersConfig = GsonBuilder()
