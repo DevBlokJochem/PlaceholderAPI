@@ -42,7 +42,7 @@ fun PlaceholdersConfig.removePlaceholder(name : String) {
     update()
 }
 
-val placeholdersConfig = GsonBuilder()
+var placeholdersConfig = GsonBuilder()
     .setPrettyPrinting()
     .create()!!.fromJson(File(fileName).readText(), PlaceholdersConfig::class.java)!!
 

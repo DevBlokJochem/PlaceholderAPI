@@ -29,7 +29,7 @@ object RegisterMessagesConfig {
 
 }
 
-val messagesConfig = GsonBuilder()
+var messagesConfig = GsonBuilder()
     .setPrettyPrinting()
     .create()!!.fromJson(File(fileName).readText(), MessagesConfig::class.java)!!
 

@@ -2,8 +2,9 @@
 
 # Permissions
 
-You can use this permission to modify every aspect of the commands:
-- placeholderapi_modify
+- placeholderapi.list
+- placeholderapi.download
+- placeholderapi.remove
 
 # Usage
 - get message with placeholders

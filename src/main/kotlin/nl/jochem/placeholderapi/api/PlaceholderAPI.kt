@@ -1,10 +1,11 @@
 package nl.jochem.placeholderapi.api
 
+import com.google.gson.GsonBuilder
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.minestom.server.entity.Player
-import nl.jochem.placeholderapi.configs.messagesConfig
-import nl.jochem.placeholderapi.configs.placeholdersConfig
+import net.minestom.server.extensions.Extension
+import nl.jochem.placeholderapi.configs.*
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerItemstackPlaceholderGroup
 import nl.jochem.placeholderapi.defaultplaceholders.PlayerPlaceholderGroup
 import java.io.File
@@ -60,5 +61,14 @@ object PlaceholderAPI {
             newString = it.replaceHolderString(player, newString)
         }
         return newString
+    }
+
+    fun reload() {
+        messagesConfig = GsonBuilder()
+            .setPrettyPrinting()
+            .create()!!.fromJson(File("extensions/placeholderapi/messages.json").readText(), MessagesConfig::class.java)!!
+        placeholdersConfig = GsonBuilder()
+            .setPrettyPrinting()
+            .create()!!.fromJson(File("extensions/placeholderapi/active_placeholders.json").readText(), PlaceholdersConfig::class.java)!!
     }
 }
